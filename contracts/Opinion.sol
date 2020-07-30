@@ -15,6 +15,9 @@ contract Opinion
 
     function addTopic(uint _id) public
     {
+        // Validate if _id is already used for a topic
+        require(!topicExists[_id], "Topic with given topic already exists");
+        
         topicList[_id] = Topic(_id, 0, 0);
         topicExists[_id] = true;
     }
@@ -33,6 +36,20 @@ contract Opinion
 
         voters[msg.sender][_id] = true;
         topicList[_id].voteFor++;
+    }
+
+    function voteAgainst(uint _id) public
+    {
+        // Validate topic id
+        require(topicExists[_id], "topic of given id Does not exists");
+
+        // Validate if user has already voted
+        require(!voters[msg.sender][_id], "User has already voted on given topic");
+
+        // Record user vote
+
+        voters[msg.sender][_id] = true;
+        topicList[_id].voteAgainst++;
     }
 
 }
