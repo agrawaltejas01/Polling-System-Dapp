@@ -10,5 +10,7 @@ module.exports = {
     develop: {
       port: 8545
     }
-  }
+  },
+
+  contracts_build_directory : "./src/contracts",
 };

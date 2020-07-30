@@ -1,18 +1,49 @@
 {
-  "name": "pet-shop",
+  "name": "polling-system",
   "version": "1.0.0",
   "description": "",
   "main": "truffle.js",
   "directories": {
     "test": "test"
   },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1",
+    "truffle-contract": "^4.0.31",
+    "web3": "^1.2.11"
+  },
   "scripts": {
     "dev": "lite-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "author": "",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "author": "Tejas Agrawal",
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.3.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

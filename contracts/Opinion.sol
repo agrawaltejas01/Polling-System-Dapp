@@ -17,7 +17,7 @@ contract Opinion
     {
         // Validate if _id is already used for a topic
         require(!topicExists[_id], "Topic with given topic already exists");
-        
+    
         topicList[_id] = Topic(_id, 0, 0);
         topicExists[_id] = true;
     }
