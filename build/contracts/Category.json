@@ -1,0 +1,865 @@
+{
+  "contractName": "Category",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "topicList",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "voteFor",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "voteAgainst",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "addTopic",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"addTopic\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"topicList\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"voteFor\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"voteAgainst\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Tejas/Projects/Polling-system/contracts/Factory.sol\":\"Category\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Tejas/Projects/Polling-system/contracts/Factory.sol\":{\"keccak256\":\"0x55a7c03d04c13257e8d17e01d530c02f84c68e30e3a99a0957ee88083ea056aa\",\"urls\":[\"bzz-raw://77cbb9b50c8f43152e3fe0ae9b498478e5c0397729429c6e2ed459f5ba5ff99a\",\"dweb:/ipfs/QmXPEAHKb4NghC5eDFqfn3fqAe5VXvkdQAxPvKhbykMmLX\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061016b806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80632d8a822f1461003b57806384ef6cf714610069575b600080fd5b6100676004803603602081101561005157600080fd5b81019080803590602001909291905050506100b9565b005b6100956004803603602081101561007f57600080fd5b810190808035906020019092919050505061010c565b60405180848152602001838152602001828152602001935050505060405180910390f35b604051806060016040528082815260200160008152602001600081525060008083815260200190815260200160002060008201518160000155602082015181600101556040820151816002015590505050565b6000602052806000526040600020600091509050806000015490806001015490806002015490508356fea265627a7a723158202de322a7ca4ce927cf6ab4b00062eaa6106cbecea70bb0114b55b94360738ff864736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80632d8a822f1461003b57806384ef6cf714610069575b600080fd5b6100676004803603602081101561005157600080fd5b81019080803590602001909291905050506100b9565b005b6100956004803603602081101561007f57600080fd5b810190808035906020019092919050505061010c565b60405180848152602001838152602001828152602001935050505060405180910390f35b604051806060016040528082815260200160008152602001600081525060008083815260200190815260200160002060008201518160000155602082015181600101556040820151816002015590505050565b6000602052806000526040600020600091509050806000015490806001015490806002015490508356fea265627a7a723158202de322a7ca4ce927cf6ab4b00062eaa6106cbecea70bb0114b55b94360738ff864736f6c63430005100032",
+  "sourceMap": "177:857:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;177:857:0;;;;;;;",
+  "deployedSourceMap": "177:857:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;177:857:0;;;;;;;;;;;;;;;;;;;;;;;;937:92;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;937:92:0;;;;;;;;;;;;;;;;;:::i;:::-;;889:39;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;889:39:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;937:92;1005:16;;;;;;;;1011:3;1005:16;;;;1016:1;1005:16;;;;1019:1;1005:16;;;988:9;:14;998:3;988:14;;;;;;;;;;;:33;;;;;;;;;;;;;;;;;;;;;;;;;;;937:92;:::o;889:39::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity >=0.4.21 <0.7.0;\r\n\r\n// Category.deployed().then(function(i) {cat = i;})\r\n// Factory.deployed().then(function(i) {fact = i;})\r\n\r\ncontract Category\r\n{\r\n    // string public topicHeader;\r\n    // uint public opinionCount;\r\n\r\n    // struct Opinion\r\n    // {\r\n    //     uint id;\r\n    //     string topic;\r\n    //     uint voteFor;\r\n    //     uint voteAgainst;\r\n    // }\r\n\r\n    // mapping (uint => Opinion) public opinions;\r\n    // function setTopicHeader(string memory _topicHeader) public\r\n    // {\r\n    //     topicHeader = _topicHeader;\r\n    // }\r\n\r\n    // function addNewOpinion(string memory _topic) public\r\n    // {\r\n    //     opinionCount ++;\r\n\r\n    //     opinions[opinionCount] = Opinion(opinionCount, _topic, 0, 0);\r\n    // }\r\n\r\n    struct Topic\r\n    {\r\n        uint id;\r\n        uint voteFor;\r\n        uint voteAgainst;\r\n    }\r\n    mapping(uint => Topic) public topicList;\r\n\r\n    function addTopic(uint _id) public\r\n    {\r\n        topicList[_id] = Topic(_id, 0, 0);\r\n    }\r\n\r\n}\r\n\r\n// contract Factory\r\n// {\r\n//     mapping (string => address) public categoryList;\r\n//     mapping (string => bool) public categoryExists;\r\n\r\n//     event opinionAdded(string _topic);\r\n//     event CategoryCreated(string _topicHeader);\r\n\r\n//     function addNewOpinion(string memory _topicHeader, string memory _topic) public\r\n//     {\r\n//         address categoryAddress = getCategoryAddress(_topicHeader);\r\n//         Category categoryInstance = Category(categoryAddress);\r\n\r\n//         require(categoryExists[_topicHeader], \"New Category contract was not created\");\r\n\r\n//         categoryInstance.addNewOpinion(_topic);\r\n\r\n//         emit opinionAdded(_topic);\r\n\r\n//     }\r\n\r\n//     function getCategoryAddress(string memory _topicHeader) public returns (address)\r\n//     {\r\n//         if(categoryExists[_topicHeader])\r\n//             return categoryList[_topicHeader];\r\n//         else\r\n//             createNewCategory(_topicHeader);\r\n//     }\r\n\r\n//     function createNewCategory(string memory _topicHeader) public returns (address)\r\n//     {\r\n//         Category t = new Category();\r\n//         t.setTopicHeader(_topicHeader);\r\n\r\n//         addCategory(_topicHeader, address(t));\r\n//         emit CategoryCreated(_topicHeader);\r\n//         return address(t);\r\n//     }\r\n\r\n//     function addCategory(string memory _topicHeader, address _address) public\r\n//     {\r\n//         categoryList[_topicHeader] = _address;\r\n//         categoryExists[_topicHeader] = true;\r\n//     }\r\n\r\n// }",
+  "sourcePath": "C:\\Users\\Tejas\\Projects\\Polling-system\\contracts\\Factory.sol",
+  "ast": {
+    "absolutePath": "/C/Users/Tejas/Projects/Polling-system/contracts/Factory.sol",
+    "exportedSymbols": {
+      "Category": [
+        29
+      ]
+    },
+    "id": 30,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:32:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 29,
+        "linearizedBaseContracts": [
+          29
+        ],
+        "name": "Category",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Category.Topic",
+            "id": 8,
+            "members": [
+              {
+                "constant": false,
+                "id": 3,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "818:7:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "818:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5,
+                "name": "voteFor",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "836:12:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 4,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "836:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7,
+                "name": "voteAgainst",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "859:16:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "859:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Topic",
+            "nodeType": "StructDefinition",
+            "scope": 29,
+            "src": "789:94:0",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 12,
+            "name": "topicList",
+            "nodeType": "VariableDeclaration",
+            "scope": 29,
+            "src": "889:39:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Topic_$8_storage_$",
+              "typeString": "mapping(uint256 => struct Category.Topic)"
+            },
+            "typeName": {
+              "id": 11,
+              "keyType": {
+                "id": 9,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "897:4:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "889:22:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Topic_$8_storage_$",
+                "typeString": "mapping(uint256 => struct Category.Topic)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 10,
+                "name": "Topic",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 8,
+                "src": "905:5:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Topic_$8_storage_ptr",
+                  "typeString": "struct Category.Topic"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 27,
+              "nodeType": "Block",
+              "src": "977:52:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 25,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 17,
+                        "name": "topicList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 12,
+                        "src": "988:9:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Topic_$8_storage_$",
+                          "typeString": "mapping(uint256 => struct Category.Topic storage ref)"
+                        }
+                      },
+                      "id": 19,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 18,
+                        "name": "_id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14,
+                        "src": "998:3:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "988:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Topic_$8_storage",
+                        "typeString": "struct Category.Topic storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 21,
+                          "name": "_id",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 14,
+                          "src": "1011:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 22,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1016:1:0",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 23,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1019:1:0",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 20,
+                        "name": "Topic",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8,
+                        "src": "1005:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_Topic_$8_storage_ptr_$",
+                          "typeString": "type(struct Category.Topic storage pointer)"
+                        }
+                      },
+                      "id": 24,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1005:16:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Topic_$8_memory",
+                        "typeString": "struct Category.Topic memory"
+                      }
+                    },
+                    "src": "988:33:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Topic_$8_storage",
+                      "typeString": "struct Category.Topic storage ref"
+                    }
+                  },
+                  "id": 26,
+                  "nodeType": "ExpressionStatement",
+                  "src": "988:33:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 28,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addTopic",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 15,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14,
+                  "name": "_id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 28,
+                  "src": "955:8:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "955:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "954:10:0"
+            },
+            "returnParameters": {
+              "id": 16,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "977:0:0"
+            },
+            "scope": 29,
+            "src": "937:92:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 30,
+        "src": "177:857:0"
+      }
+    ],
+    "src": "33:2492:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Users/Tejas/Projects/Polling-system/contracts/Factory.sol",
+    "exportedSymbols": {
+      "Category": [
+        29
+      ]
+    },
+    "id": 30,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:32:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 29,
+        "linearizedBaseContracts": [
+          29
+        ],
+        "name": "Category",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Category.Topic",
+            "id": 8,
+            "members": [
+              {
+                "constant": false,
+                "id": 3,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "818:7:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 2,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "818:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5,
+                "name": "voteFor",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "836:12:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 4,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "836:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7,
+                "name": "voteAgainst",
+                "nodeType": "VariableDeclaration",
+                "scope": 8,
+                "src": "859:16:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "859:4:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Topic",
+            "nodeType": "StructDefinition",
+            "scope": 29,
+            "src": "789:94:0",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 12,
+            "name": "topicList",
+            "nodeType": "VariableDeclaration",
+            "scope": 29,
+            "src": "889:39:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Topic_$8_storage_$",
+              "typeString": "mapping(uint256 => struct Category.Topic)"
+            },
+            "typeName": {
+              "id": 11,
+              "keyType": {
+                "id": 9,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "897:4:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "889:22:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Topic_$8_storage_$",
+                "typeString": "mapping(uint256 => struct Category.Topic)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 10,
+                "name": "Topic",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 8,
+                "src": "905:5:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Topic_$8_storage_ptr",
+                  "typeString": "struct Category.Topic"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 27,
+              "nodeType": "Block",
+              "src": "977:52:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 25,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 17,
+                        "name": "topicList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 12,
+                        "src": "988:9:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Topic_$8_storage_$",
+                          "typeString": "mapping(uint256 => struct Category.Topic storage ref)"
+                        }
+                      },
+                      "id": 19,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 18,
+                        "name": "_id",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14,
+                        "src": "998:3:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "988:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Topic_$8_storage",
+                        "typeString": "struct Category.Topic storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 21,
+                          "name": "_id",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 14,
+                          "src": "1011:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 22,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1016:1:0",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 23,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1019:1:0",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 20,
+                        "name": "Topic",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8,
+                        "src": "1005:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_Topic_$8_storage_ptr_$",
+                          "typeString": "type(struct Category.Topic storage pointer)"
+                        }
+                      },
+                      "id": 24,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1005:16:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Topic_$8_memory",
+                        "typeString": "struct Category.Topic memory"
+                      }
+                    },
+                    "src": "988:33:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Topic_$8_storage",
+                      "typeString": "struct Category.Topic storage ref"
+                    }
+                  },
+                  "id": 26,
+                  "nodeType": "ExpressionStatement",
+                  "src": "988:33:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 28,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addTopic",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 15,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14,
+                  "name": "_id",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 28,
+                  "src": "955:8:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 13,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "955:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "954:10:0"
+            },
+            "returnParameters": {
+              "id": 16,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "977:0:0"
+            },
+            "scope": 29,
+            "src": "937:92:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 30,
+        "src": "177:857:0"
+      }
+    ],
+    "src": "33:2492:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x6907f3753F7dc9923D507ab23b6478f2aCb64C4c",
+      "transactionHash": "0x9751d26aab94e0bbc2c21e0f4135f5d254c54f1aa1ff52d4c7f1f32296853a90"
+    }
+  },
+  "schemaVersion": "3.2.2",
+  "updatedAt": "2020-07-29T13:22:32.532Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
