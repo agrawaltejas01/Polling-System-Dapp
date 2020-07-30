@@ -2,21 +2,6 @@ var Opinion = artifacts.require("./Opinion.sol")
 
 contract("Opinion", function (accounts) {
 
-    var opinionInstance;
-    // Check if Topic is getting added in opinion
-    it('Dummy Topic is getting added in opinonList', function () {
-        return Opinion.deployed().then(function (instance) {
-            opinionInstance = instance;
-            return opinionInstance.addTopic(12);
-        }).then(function (recipt) {
-
-            return opinionInstance.topicList(12);
-        }).then(function (Topic) {
-            var id = Topic[0];
-            assert.equal(id, 12, "Wrong ID was inserted");
-        });
-    });
-
     // user can VoteFor for a given topic
     it('Voter can vote for a given valid topic', function () {
         return Opinion.deployed().then(function (instance) {
