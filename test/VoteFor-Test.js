@@ -2,6 +2,8 @@ var Opinion = artifacts.require("./Opinion.sol")
 
 contract("Opinion", function (accounts) {
 
+    var opinionInstance;
+
     // user can VoteFor for a given topic
     it('Voter can vote for a given valid topic', function () {
         return Opinion.deployed().then(function (instance) {
