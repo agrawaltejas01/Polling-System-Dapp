@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.21 <0.7.0;
 
-// Category.deployed().then(function(i) {cat = i;})
-// Factory.deployed().then(function(i) {fact = i;})
-
 contract Opinion
 {
 
